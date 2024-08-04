@@ -17,7 +17,7 @@ class DBService {
     //   Visitor(
     //     fullname: 'Jamiu Jimoh',
     //     phone: '0627987492',
-    //     checkedInAt: DateTime.now(),
+    //     checkedInAt: DateTime(2024, 05, 21),
     //     visitReason: 'Something something',
     //   ),
     //   Visitor(
@@ -31,35 +31,35 @@ class DBService {
     //   Visitor(
     //     fullname: 'Jamiu Jimoh',
     //     phone: '7627987492',
-    //     checkedInAt: DateTime.now(),
+    //     checkedInAt: DateTime(2024, 05, 30),
     //     visitReason: 'Something something',
     //   ),
     //
     //   Visitor(
     //     fullname: 'Jamiu Jimoh',
     //     phone: '1627077492',
-    //     checkedInAt: DateTime.now(),
+    //     checkedInAt: DateTime(2024, 05, 13),
     //     visitReason: 'Something something',
     //   ),
     //
     //   Visitor(
     //     fullname: 'Jamiu Jimoh',
     //     phone: '8647987492',
-    //     checkedInAt: DateTime.now(),
+    //     checkedInAt: DateTime(2024, 05, 24),
     //     visitReason: 'Something something',
     //   ),
     //
     //   Visitor(
     //     fullname: 'Jamiu Jimoh',
     //     phone: '9097987492',
-    //     checkedInAt: DateTime.now(),
+    //     checkedInAt: DateTime(2024, 05, 15),
     //     visitReason: 'Something something',
     //   ),
     //
     //   Visitor(
     //     fullname: 'Jamiu Jimoh',
     //     phone: '1644987492',
-    //     checkedInAt: DateTime.now(),
+    //     checkedInAt: DateTime(2024, 05, 8),
     //     visitReason: 'Something something',
     //   ),
     //   Visitor(
@@ -136,7 +136,7 @@ class DBService {
         .where()
         .filter()
         .checkedOutAtIsNull()
-        .sortByCheckedOutAtDesc()
+        .sortByCheckedInAtDesc()
         .findAll();
 
     final visitors = List.generate(found.length, (i) {

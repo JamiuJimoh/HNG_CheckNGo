@@ -2,12 +2,17 @@ import 'package:intl/intl.dart';
 
 extension Formatter on DateTime {
   String get daySuffix {
-    return switch (day) {
-      1 => 'st',
-      2 => 'nd',
-      3 => 'rd',
-      _ => 'th',
-    };
+    if (day % 100 >= 11 && day % 100 <= 20) {
+      return 'th';
+    } else if (day % 10 == 1) {
+      return 'st';
+    } else if (day % 10 == 2) {
+      return 'nd';
+    } else if (day % 10 == 3) {
+      return 'rd';
+    } else {
+      return 'th';
+    }
   }
 
   String get timeMSuffix {

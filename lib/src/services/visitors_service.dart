@@ -25,13 +25,12 @@ class VisitorsService {
 
     try {
       // Write to the NFC tag and ensure this process completes before proceeding
-      // await nfcService.writeTag(phone);
       nfcService.startNFCOperation(
         nfcOperation: NFCOperation.write,
         data: phone,
       );
 
-      // Only after successful NFC write, save the visitor data to the local DB
+      // wait for 3 seconds at most, while app is waiting for user to provide nfc tag to read
       await Future.delayed(const Duration(seconds: 3));
       if (nfcService.isProcessing) {
         throw CustomException(
@@ -42,6 +41,7 @@ class VisitorsService {
         throw CustomException(nfcService.message);
       }
 
+      // Only after successful NFC write, save the visitor data to the local DB
       await dbService.save(visitor);
       return visitor;
     } catch (e) {
@@ -54,6 +54,7 @@ class VisitorsService {
     try {
       nfcService.startNFCOperation(nfcOperation: NFCOperation.read);
 
+      // wait for 3 seconds at most, while app is waiting for user to provide nfc tag to read
       await Future.delayed(const Duration(seconds: 3));
       if (nfcService.isProcessing) {
         throw CustomException(
